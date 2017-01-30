@@ -1,0 +1,276 @@
+<div class="container" ng-controller="customersCtrl" ng-init="init()">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <div class="input-group" >
+        <input class="form-control" type="file" id="uploadFile"/>
+        <span class="input-group-btn">
+          <button class="btn btn-default" ng-click="uploadFile()">
+            Upload
+          </button>
+      </span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center" >
+      <label for="singleSelect" class="text-center"> Choose a file: </label><br>
+      <select class="form-control" name="singleSelect" ng-model="ccd.selectedFileName" 
+        ng-change="display(ccd.selectedFileName)" class="text-center">
+        <option value="" selected disabled>Select a file</option>
+        <option value="{{ file }}" ng-repeat="file in ccd.fileNames">{{ file }}</option>
+      </select><br>
+    </div>
+<!--     <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.selectedFileName)">Export All</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.selectedFileName.split('.')[0]}}.csv"></a>
+    </div>
+ -->  </div>
+
+  <div class="row" ng-if="ccd.demographics">
+    <div class="col-md-12">
+      <title>{{ccd.demographics[1].title}}</title>
+      <h1>{{ccd.demographics[1].title}}</h1>
+      <h2 > 
+        Patient's Name : {{ccd.demographics[1].first_name}} {{ccd.demographics[1].last_name}}
+      </h2>
+    </div>
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.demographics[0].title}}</h3>    
+      <div ng-repeat= "(key,value) in ccd.demographics" >
+        <table class="table table-condensed" ng-if = "key != 0">
+          <tr ng-repeat="(x,y) in value"> 
+            <td>
+              <b>{{x}}<b> 
+            </td>
+            <td>
+              {{y}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.demographics[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.demographics[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.vitals[0].title}}</h3>
+      <table class="table table-bordered table-condensed" ng-if="ccd.vitals">
+        <tr>
+          <th >Date</th>
+          <th >Code</th>
+          <th >Coding System</th>
+          <th >Name</th>
+          <th >UOM</th>
+          <th >Value</th>
+          <th >Comment(L/N/H)</th>
+        </tr >
+     
+        <tr ng-repeat=" y in ccd.vitals">
+          <td >{{y.observation_date}}</td>
+          <td >{{y.vtl_code}}</td>
+          <td >{{y.vtl_coding_system}}</td>
+          <td >{{y.vtl_name}}</td>
+          <td >{{y.vtl_measuring_unit}}</td>
+          <td >{{y.vtl_result}}</td>
+          <td >{{y.vtl_result_comment}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.vitals[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.vitals[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.allergies[0].title}}</h3>
+      <table class="table table-bordered table-condensed" ng-if="ccd.allergies">
+        <tr>
+          <th >Reaction</th>
+          <th >Severity</th>
+          <th >Status</th>
+          <th >Substance</th>
+        </tr >
+     
+        <tr ng-repeat=" y in ccd.allergies">
+          <td >{{y.reaction}}</td>
+          <td >{{y.severity}}</td>
+          <td >{{y.allergy_status}}</td>
+          <td >{{y.substance}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.allergies[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.allergies[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.problems[0].title}}</h3>
+      <table class="table table-bordered table-condensed" ng-if="ccd.problems" >
+        <tr>
+          <th >Code</th>
+          <th >Coding System</th>
+          <th >Problem Name</th>
+          <th >Status</th>
+          <th >Start Date</th>
+        </tr >
+     
+        <tr ng-repeat=" y in ccd.problems">
+          <td >{{y.prob_code}}</td>
+          <td >{{y.prob_coding_system}}</td>
+          <td >{{y.prob_description}}</td>
+          <td >{{y.prob_status}}</td>
+          <td >{{y.problem_since}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.problems[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.problems[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">      
+      <h3>{{ccd.results[0].title}}</h3>
+      <table class="table table-bordered table-condensed" ng-if="ccd.results" >
+        <tr>
+          <th >Code</th>
+          <th >Coding System</th>
+          <th >Date</th>
+          <th >Test Name</th>
+          <th >UOM</th>
+          <th >Test Result</th>
+          <th >Comment</th>
+          <th >Max Reference Value-Male</th>
+          <th >Min Reference Value-Male</th>
+          <th >Max Reference Value-Female</th>
+          <th >Min Reference Value-Female</th>
+        </tr >
+          
+        <tr ng-repeat=" y in ccd.results">
+          <td >{{y.test_code}}</td>
+          <td >{{y.test_coding_system}}</td>
+          <td >{{y.test_date}}</td>
+          <td >{{y.test_name}}</td>
+          <td >{{y.test_measuring_unit}}</td>
+          <td >{{y.test_result}}</td>
+          <td >{{y.test_result_comment}}</td>
+          <td >{{y.reference_highvalue_male}}</td>
+          <td >{{y.reference_lowvalue_male}}</td>
+          <td >{{y.reference_highvalue_female}}</td>
+          <td >{{y.reference_lowvalue_female}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.results[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.results[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.providers[0].title}}</h3>
+      <table class="table table-condensed" ng-if="ccd.providers">
+        <tr>
+          <th >Name</th>
+          <th >Provider NPI</th>
+          <th >Designation</th>
+        </tr >
+     
+        <tr ng-repeat=" y in ccd.providers">
+          <td >
+            {{y.prefix}} {{y.prov_first_name}} {{y.prov_last_name}}
+          </td>
+          <td >{{y.provider_npi}}</td>
+          <td >{{y.provider_speciality}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.providers[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.providers[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+      
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.encounters[0].title}}</h3>
+      <div ng-repeat= "(key,value) in ccd.encounters">
+        <table class="table table-condensed" ng-if = "key != 0" >
+          <tr ng-repeat="(x,y) in value"> 
+            <td>
+              <b>{{x}}<b> 
+            </td>
+            <td>
+              {{y}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.encounters[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.encounters[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.medications[0].title}}</h3>
+      <div ng-repeat= "(key,value) in ccd.medications">
+        <table class="table table-condensed" ng-if = "key != 0" width = "50%">
+          <tr ng-repeat="(x,y) in value"> 
+            <td>
+              <b>{{x}}<b> 
+            </td>
+            <td>
+              {{y}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.medications[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.medications[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h3>{{ccd.procedures[0].title}}</h3>
+      <div ng-repeat= "(key,value) in ccd.procedures">
+        <table class="table table-condensed" ng-if = "key != 0" width = "50%">
+          <tr ng-repeat="(x,y) in value"> 
+            <td>
+              <b>{{x}}<b> 
+            </td>
+            <td>
+              {{y}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-2 text-right">
+      <button type="button" ng-if="ccd.selectedFileName" ng-click="exportTheFile(ccd.procedures[0].title)">Export</button>
+      <a ng-show="false" id="exportCsv" class="btn btn-default" target="_blank" download="{{ccd.procedures[0].title}}_{{ccd.demographics[1].first_name}}.csv"></a>
+    </div>
+  </div>
+</div>

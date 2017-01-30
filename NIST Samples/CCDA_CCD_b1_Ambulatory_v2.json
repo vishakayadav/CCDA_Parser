@@ -1,0 +1,232 @@
+{
+  "allergies": [
+    {
+      "title": "Allergies"
+    }, 
+    {
+      "allergy_status": "Inactive", 
+      "reaction": "Hives", 
+      "severity": "Moderate to severe", 
+      "substance": "Penicillin G benzathine"
+    }, 
+    {
+      "allergy_status": "Active", 
+      "reaction": "Shortness of Breath", 
+      "severity": "Moderate", 
+      "substance": "Codeine"
+    }, 
+    {
+      "allergy_status": "Active", 
+      "reaction": "Hives", 
+      "severity": "Mild to moderate", 
+      "substance": "Aspirin"
+    }
+  ], 
+  "demographics": [
+    {
+      "title": "Demographics"
+    }, 
+    {
+      "DOB": "19470501", 
+      "ccd_doc_id": "1.1.1.1.1.1.1.1.1", 
+      "city": "Beaverton", 
+      "country": "US", 
+      "first_name": "Myra", 
+      "gender": "F", 
+      "last_name": "Jones", 
+      "mail_address1": "1357 Amber Drive", 
+      "middle_name": null, 
+      "patient_id": "2", 
+      "primary_phone": "(816)276-6909", 
+      "race": "White", 
+      "state": "OR", 
+      "title": "Community Health and Hospitals: Health Summary", 
+      "zip_code": "97006"
+    }
+  ], 
+  "encounters": [
+    {
+      "title": "Encounters"
+    }, 
+    {
+      "enc_code": "99222", 
+      "enc_coding_system": "CPT", 
+      "enc_date": "20120806", 
+      "enc_description": "Mild Fever", 
+      "enc_place": "Community Health and Hospitals", 
+      "enc_result": "Pneumonia"
+    }
+  ], 
+  "medications": [
+    {
+      "title": "Medications"
+    }, 
+    {
+      "administration_route": "inhalant", 
+      "dose_directions": " 2 puffs once", 
+      "indications": "Pneumonia (233604007 SNOMED CT)", 
+      "instructions": "Generic Substitition Allowed", 
+      "med_coding_system": "LOINC", 
+      "med_status": "Active", 
+      "medication": "Albuterol 0.09 MG/ACTUAT inhalant solution", 
+      "start_date": "20120806"
+    }
+  ], 
+  "problems": [
+    {
+      "title": "Problems"
+    }, 
+    {
+      "prob_code": "233604007", 
+      "prob_coding_system": "2.16.840.1.113883.6.96", 
+      "prob_description": "Pneumonia", 
+      "prob_status": "Resolved", 
+      "problem_since": "20120806"
+    }, 
+    {
+      "prob_code": "195967001", 
+      "prob_coding_system": "2.16.840.1.113883.6.96", 
+      "prob_description": "Asthma", 
+      "prob_status": "Active", 
+      "problem_since": "20070103"
+    }
+  ], 
+  "procedures": [
+    {
+      "title": "Procedures"
+    }, 
+    {
+      "place_of_service": "Community Health and Hospitals", 
+      "place_of_service_code": "1160-1", 
+      "place_of_service_codesystem": "HealthcareServiceLocation", 
+      "proc_code_system": "SNOMED-CT", 
+      "procedure_code": "168731009", 
+      "procedure_date": "20120807", 
+      "procedure_name": "Chest X-Ray"
+    }
+  ], 
+  "providers": [
+    {
+      "title": "Providers"
+    }, 
+    {
+      "prefix": "Dr.", 
+      "prov_first_name": "Henry", 
+      "prov_last_name": "Seven", 
+      "prov_middle_name": null, 
+      "provider_npi": "PseudoMD-1", 
+      "provider_speciality": "General Practice"
+    }, 
+    {
+      "prefix": "Dr.", 
+      "prov_first_name": "Henry", 
+      "prov_last_name": "Seven", 
+      "prov_middle_name": null, 
+      "provider_npi": "PseudoMD-3", 
+      "provider_speciality": "General Practice"
+    }
+  ], 
+  "results": [
+    {
+      "title": "Results"
+    }, 
+    {
+      "reference_highvalue_female": "16", 
+      "reference_highvalue_male": "18", 
+      "reference_lowvalue_female": "12", 
+      "reference_lowvalue_male": "13", 
+      "test_code": "30313-1", 
+      "test_coding_system": "LOINC", 
+      "test_date": "20120810", 
+      "test_measuring_unit": "g/dl", 
+      "test_name": "HGB", 
+      "test_result": "13.8", 
+      "test_result_comment": "N"
+    }, 
+    {
+      "reference_highvalue_female": "10.8", 
+      "reference_highvalue_male": "10.8", 
+      "reference_lowvalue_female": "4.3", 
+      "reference_lowvalue_male": "4.3", 
+      "test_code": "33765-9", 
+      "test_coding_system": "LOINC", 
+      "test_date": "20120810", 
+      "test_measuring_unit": "10+3/ul", 
+      "test_name": "WBC", 
+      "test_result": "8.7", 
+      "test_result_comment": "N"
+    }, 
+    {
+      "reference_highvalue_female": "350", 
+      "reference_highvalue_male": "350", 
+      "reference_lowvalue_female": "150", 
+      "reference_lowvalue_male": "150", 
+      "test_code": "26515-7", 
+      "test_coding_system": "LOINC", 
+      "test_date": "20120810", 
+      "test_measuring_unit": "10+3/ul", 
+      "test_name": "PLT", 
+      "test_result": "123", 
+      "test_result_comment": "L"
+    }
+  ], 
+  "vitals": [
+    {
+      "title": "Vitals"
+    }, 
+    {
+      "observation_date": "20111101", 
+      "vtl_code": "8302-2", 
+      "vtl_coding_system": "LOINC", 
+      "vtl_measuring_unit": "in", 
+      "vtl_name": "Height", 
+      "vtl_result": "69", 
+      "vtl_result_comment": "N"
+    }, 
+    {
+      "observation_date": "20111101", 
+      "vtl_code": "3141-9", 
+      "vtl_coding_system": "LOINC", 
+      "vtl_measuring_unit": "lbs", 
+      "vtl_name": "Patient Body Weight - Measured", 
+      "vtl_result": "189", 
+      "vtl_result_comment": "N"
+    }, 
+    {
+      "observation_date": "20111101", 
+      "vtl_code": "8480-6", 
+      "vtl_coding_system": "LOINC", 
+      "vtl_measuring_unit": "mm[Hg]", 
+      "vtl_name": "Intravascular Systolic", 
+      "vtl_result": "132", 
+      "vtl_result_comment": "N"
+    }, 
+    {
+      "observation_date": "20120806", 
+      "vtl_code": "8302-2", 
+      "vtl_coding_system": "LOINC", 
+      "vtl_measuring_unit": "in", 
+      "vtl_name": "Height", 
+      "vtl_result": "69", 
+      "vtl_result_comment": "N"
+    }, 
+    {
+      "observation_date": "20120806", 
+      "vtl_code": "3141-9", 
+      "vtl_coding_system": "LOINC", 
+      "vtl_measuring_unit": "lbs", 
+      "vtl_name": "Patient Body Weight - Measured", 
+      "vtl_result": "194", 
+      "vtl_result_comment": "N"
+    }, 
+    {
+      "observation_date": "20120806", 
+      "vtl_code": "8480-6", 
+      "vtl_coding_system": "LOINC", 
+      "vtl_measuring_unit": "mm[Hg]", 
+      "vtl_name": "Intravascular Systolic", 
+      "vtl_result": "145", 
+      "vtl_result_comment": "N"
+    }
+  ]
+}

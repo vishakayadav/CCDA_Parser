@@ -9,6 +9,7 @@ app.config(function($routeProvider) {
 
 app.controller('customersCtrl', function($scope, $http) {
     $scope.ccd = {};
+    $scope.copy = {};
 
     $scope.init = function () {
       var getFileNames = {
@@ -21,7 +22,7 @@ app.controller('customersCtrl', function($scope, $http) {
 
       $http(getFileNames).success(function (response, status, headers, config) { 
         console.log(headers());
-        $scope.ccd.fileNames = response.filename;
+        $scope.ccd.patientName = response.name;
       });
     }
 
@@ -35,6 +36,7 @@ app.controller('customersCtrl', function($scope, $http) {
       };
 
       $http(req).success(function (response) { 
+        console.log(response)
         $scope.ccd.allergies = response.allergies;
         $scope.ccd.encounters = response.encounters;
         $scope.ccd.demographics = response.demographics;
@@ -95,5 +97,28 @@ app.controller('customersCtrl', function($scope, $http) {
         console.log(response);
       });
     }
+
+    $scope.editProfile = function (){
+      $scope.copy.demographics = angular.copy($scope.ccd.demographics);
+      console.log($scope.copy.demographics)
+    }
+
+
+    $scope.saveChanges = function (k){
+      $scope.ccd.demographics = $scope.copy.demographics;
+      var req = {
+        method:'POST',
+        url:'http://localhost:5000/ccd/editInDB/'+ k,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data : $scope.ccd.demographics
+      }; 
+      $http(req).success(function (response) {
+        console.log(response);
+      });
+    }
+
+
 
 });
